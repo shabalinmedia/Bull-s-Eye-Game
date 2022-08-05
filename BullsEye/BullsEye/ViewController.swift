@@ -9,16 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var currentValue = 50
+    @IBOutlet weak var slider: UISlider!
+    var currentValue = 0
+    var targetValue = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        currentValue = lround(Double(slider.value))
+        targetValue = Int.random(in: 1...100)
     }
 
     @IBAction func showAlert() {
         
-        let message = "The value of the slider is: \(currentValue)"
+        let message = "The value of the slider is: \(currentValue)" + "\nThe target value is: \(targetValue)"
         
         let alert = UIAlertController(
         title: "Hello, World",

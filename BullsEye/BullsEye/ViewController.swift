@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     var targetValue = 0
     var score = 0
     var round = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         startNewRound()
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         
         
     }
-
+    
     @IBAction func showAlert() {
         let difference = abs(targetValue - currentValue)
         var points = 100 - difference
@@ -64,18 +64,18 @@ class ViewController: UIViewController {
         }
         
         score += points
-       
+        
         let message = "Your score \(points) points"
         
         let alert = UIAlertController(
-        title: title,
-        message: message,
-        preferredStyle: .alert)
+            title: title,
+            message: message,
+            preferredStyle: .alert)
         
         let action = UIAlertAction(
-        title: "OK",
-        style: .default,
-        handler: {_ in self.startNewRound()})
+            title: "OK",
+            style: .default,
+            handler: {_ in self.startNewRound()})
         
         alert.addAction(action)
         
@@ -104,6 +104,12 @@ class ViewController: UIViewController {
         score = 0
         round = 0
         startNewRound()
+        let transition = CATransition()
+        transition.type = CATransitionType.fade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(
+            name: CAMediaTimingFunctionName.easeOut)
+        view.layer.add(transition, forKey: nil)
     }
     
 }
